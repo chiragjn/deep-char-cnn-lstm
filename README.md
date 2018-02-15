@@ -12,13 +12,15 @@ Overall Idea:
 
 ### Work in Progress
 
-- TODO: Verify Implementation
 - TODO: Add loading utils
 - TODO: Add preprocessing and padding utils
 - TODO: Add batching utils
 - TODO: Add model training code
 - TODO: Add model continue-training code
-- TODO: Test Implementation on Quora similar pair dataset
+- TODO: Test Similarity implementation on Quora similar pair dataset
+- TODO: Test Classification implementation on Kaggle Toxic internet comments dataset
+- TODO: Tune Hyperparameters and try different modifications to architectures
+- TODO: Take Hyperparameters using argparse
 - TODO: Add tensorboard and tfdbg support
 
 ### Example Usage:
@@ -26,12 +28,18 @@ Overall Idea:
 ```python
 from model import ClassifierModel, SimilarityModel
 
-classifier = ClassifierModel(vocab_size=10000, charset_size=100, num_classes=5,
-                             mode=ClassifierModel.MULTILABEL, char_kernel_sizes=(3,), encoder_hidden_units=128,
+classifier = ClassifierModel(vocab_size=10000,
+                             charset_size=100,
+                             num_classes=5,
+                             mode=ClassifierModel.MULTILABEL,
+                             char_kernel_sizes=(3,),
+                             encoder_hidden_units=128,
                              bidirectional=False)
 classifier.compile_model()
 
-similarity_model = SimilarityModel(vocab_size=10000, charset_size=100, num_negative_samples=1)
+similarity_model = SimilarityModel(vocab_size=10000,
+                                   charset_size=100,
+                                   num_negative_samples=1)
 similarity_model.compile_model()
 ```
 
